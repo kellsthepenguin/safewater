@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  idx             Int              @id @default(autoincrement())
+  name            String
+  unsuitableItems UnsuitableItem[]
+  products        Product[]
+}
+
+model UnsuitableItem {
+  idx             Int           @id @default(autoincrement())
+  lineName        String // 호정명
+  name            String
+  checkYear       Int
+  checkQuarter    String
+  organization    Organization? @relation(fields: [organizationIdx], references: [idx])
+  organizationIdx Int?
+  product         Product?      @relation(fields: [productIdx], references: [idx])
+  productIdx      Int?
+}
+
+model Product {
+  idx             Int              @id @default(autoincrement())
+  name            String
+  organization    Organization     @relation(fields: [organizationIdx], references: [idx])
+  organizationIdx Int
+  unsuitableItems UnsuitableItem[]
+}
