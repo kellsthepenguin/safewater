@@ -23,14 +23,22 @@ export default function Home() {
   }, [])
 
   return (
-    <>
+    <div className='flex flex-col items-center'>
       <Topbar />
-      <div className='text-center'>
+      <div>
         <p className='mt-28 text-7xl font-bold'>
           매일 마시는 생수, 안전할까요?
         </p>
         <Input className='mt-8' placeholder={placeholder} />
       </div>
-    </>
+      <div className='fixed bottom-0 font-mono'>
+        <p>
+          Made with <span className='text-red-500'>♥</span> by{' '}
+          <a href='https://github.com/kellsthepenguin' target='_blank'>
+            kellsthepenguin
+          </a>
+        </p>
+      </div>
+    </div>
   )
 }
