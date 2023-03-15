@@ -23,10 +23,10 @@ export default function Home() {
   }, [])
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center text-center'>
       <Topbar />
       <div>
-        <p className='mt-28 text-7xl font-bold'>
+        <p className='mt-14 sm:mt-28 text-4xl md:text-6xl font-bold'>
           매일 마시는 생수, 안전할까요?
         </p>
         <Input className='mt-8' placeholder={placeholder} />
