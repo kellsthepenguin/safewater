@@ -12,7 +12,7 @@ datasource db {
 
 model Organization {
   idx             Int              @id @default(autoincrement())
-  name            String
+  name            String           @unique
   unsuitableItems UnsuitableItem[]
   products        Product[]
 }

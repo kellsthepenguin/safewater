@@ -23,8 +23,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "csvtojson": "^2.0.10",
     "postcss": "^8.4.21",
     "prisma": "^4.11.0",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "ts-node": "^10.9.1"
   }
 }
