@@ -12,9 +12,12 @@ const productFileName = './data/product.csv'
 
   Promise.all(
     products.map(async ([productName, organizationName]) => {
-      const organization = await prisma.organization.findUnique({
+      const organization = await prisma.organization.findFirst({
         where: {
-          name: organizationName,
+          name: {
+            contains: organizationName,
+            mode: 'insensitive',
+          },
         },
       })
 
