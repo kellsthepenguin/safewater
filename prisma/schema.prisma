@@ -19,7 +19,7 @@ model Organization {
 
 model UnsuitableItem {
   idx             Int           @id @default(autoincrement())
-  lineName        String // 호정명
+  lineName        String? // 호정명
   name            String
   checkYear       Int
   checkQuarter    String
@@ -31,8 +31,8 @@ model UnsuitableItem {
 
 model Product {
   idx             Int              @id @default(autoincrement())
-  name            String
-  organization    Organization     @relation(fields: [organizationIdx], references: [idx])
-  organizationIdx Int
+  name            String           @unique
+  organization    Organization?    @relation(fields: [organizationIdx], references: [idx])
+  organizationIdx Int?
   unsuitableItems UnsuitableItem[]
 }
