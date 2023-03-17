@@ -3,7 +3,7 @@ const csv = require('csvtojson')
 
 const prisma = new PrismaClient()
 const orgFileName = './data/org.csv'
-// todo: product도 추가해야됨
+
 ;(async () => {
   const results = await csv().fromFile(orgFileName)
   const organizations = [
@@ -29,10 +29,7 @@ const orgFileName = './data/org.csv'
         (organization) => organization.name === result['제조업체명']
       )
 
-      const unsuitableIndexes = []
       for (const [i, value] of values.entries()) {
-        console.log(organization)
-
         if (value.includes('부적합')) {
           await prisma.unsuitableItem.create({
             data: {
@@ -43,7 +40,6 @@ const orgFileName = './data/org.csv'
               organizationIdx: organization.idx,
             },
           })
-          unsuitableIndexes.push(i)
         }
       }
     }
