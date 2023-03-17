@@ -3,7 +3,7 @@ import Topbar from '@/components/Topbar'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export default function Home() {
   const [placeholder, setPlaceholder] = useState('')
@@ -41,8 +41,14 @@ export default function Home() {
         </a>
       </p>
       <div className='fixed bottom-0 font-mono'>
-        <p>마지막 제품 데이터 업데이트: {data.product}</p>
-        <p>마지막 제조업체 업데이트: {data.org}</p>
+        {isLoading || error ? (
+          <p>로딩 중...</p>
+        ) : (
+          <>
+            <p>마지막 제품 데이터 업데이트: {data.product}</p>
+            <p>마지막 제조업체 업데이트: {data.org}</p>
+          </>
+        )}
       </div>
     </div>
   )
