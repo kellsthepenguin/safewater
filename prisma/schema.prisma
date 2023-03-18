@@ -31,8 +31,10 @@ model UnsuitableItem {
 
 model Product {
   idx             Int              @id @default(autoincrement())
-  name            String           @unique
+  name            String
   organization    Organization?    @relation(fields: [organizationIdx], references: [idx])
   organizationIdx Int?
   unsuitableItems UnsuitableItem[]
+
+  @@unique([name, organizationIdx])
 }
