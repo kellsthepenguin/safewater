@@ -6,10 +6,12 @@ export default function Input({
   className,
   placeholder,
   innerRef,
+  onSearchTriggered,
 }: {
   className?: string
   placeholder?: string
   innerRef?: RefObject<HTMLInputElement>
+  onSearchTriggered?: () => void
 }) {
   const [width, setWidth] = useState(0)
 
@@ -31,7 +33,10 @@ export default function Input({
           placeholder={placeholder}
           ref={innerRef}
         />
-        <div className='absolute -translate-y-1/2 top-[50%] right-4'>
+        <div
+          className='absolute -translate-y-1/2 top-[50%] right-4'
+          onClick={onSearchTriggered}
+        >
           <FontAwesomeIcon
             icon={faSearch}
             size='3x'
