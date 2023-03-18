@@ -10,7 +10,10 @@ export default function ProductBox({ product }: { product: Product }) {
   return (
     <div className='flex text-left w-[calc(65vw-12px)] h-32 min-h-[8rem] bg-white rounded-md'>
       <div className='m-2'>
-        <p className='font-bold mb-2'>{product.name}</p>
+        <p className='font-bold mb-2'>
+          {product.name} (
+          {product.organization ? product.organization.name : '제조사 불명'})
+        </p>
         <p>
           업체 부적합:{' '}
           {isOrganizationHaveUnsuitableItems ? (
