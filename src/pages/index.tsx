@@ -63,13 +63,16 @@ export default function Home() {
           />
         </div>
       </div>
-      <p className='fixed bottom-0 left-0 pl-1 font-mono text-sm max-md:hidden'>
+      <p className='fixed bottom-0 left-0 pl-1 font-mono text-sm'>
         Made with <span className='text-red-500'>♥</span> by{' '}
         <a href='https://github.com/kellsthepenguin' target='_blank'>
           kellsthepenguin
-        </a>
+        </a>{' '}
+        <span className='block'>
+          이 사이트는 생수의 안전을 보증하지 않습니다.
+        </span>
       </p>
-      <div className='fixed bottom-0 font-mono'>
+      <div className='fixed bottom-0 font-mono max-md:hidden'>
         {isLoading || error ? (
           <p>로딩 중...</p>
         ) : (
