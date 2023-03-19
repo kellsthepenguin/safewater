@@ -21,6 +21,14 @@ export default function Input({
     window.addEventListener('resize', () => {
       setWidth(window.innerWidth)
     })
+
+    innerRef?.current?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.stopImmediatePropagation()
+        if (e.repeat) return
+        onSearchTriggered!()
+      }
+    })
   }
 
   return (
